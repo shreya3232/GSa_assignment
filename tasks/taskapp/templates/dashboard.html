@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+</head>
+<body>
+    <h2>Dashboard</h2>
+
+    <h3>Assign Task</h3>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Add Task</button>
+    </form>
+
+    <h3>Your Tasks</h3>
+    <ul>
+        {% for task in tasks %}
+            <li>{{ task.name }} - {{ task.date_time }} - {{ task.status }} - Assigned to: {{ task.assigned_to.username }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
